@@ -10,7 +10,7 @@
         <a asp-page="/Tracks/Create" class="btn btn-primary rounded-pill">Добавить трек</a>
     </div>
 
-    <div class="row g-4">
+        <div class="row g-4">
         @foreach (var track in Model.Tracks)
         {
             <div class="col-12 col-md-6 col-lg-4">
@@ -21,14 +21,15 @@
                         <span class="badge bg-dark rounded-pill">@track.DurationSeconds сек.</span>
                     </div>
                     <div class="card-footer bg-white border-0 pb-3">
-                        <a asp-page="/Tracks/Details" asp-route-id="@track.Id" class="btn btn-outline-primary w-100 rounded-pill">Подробнее</a>
+                        <!-- Ссылка на просмотр -->
+                        <a asp-page="/Tracks/Details" asp-route-id="@track.Id" class="btn btn-outline-primary w-100 rounded-pill mb-2">Подробнее</a>
+                        
+                        <!-- ФОРМА УДАЛЕНИЯ (должна быть внутри цикла) -->
+                        <form method="post" asp-page-handler="Delete" asp-route-id="@track.Id">
+                            <button type="submit" class="btn btn-outline-danger w-100 rounded-pill" onclick="return confirm('Удалить трек?')">Удалить</button>
+                        </form>
                     </div>
                 </div>
             </div>
         }
     </div>
-
-    <form method="post" asp-page-handler="Delete" asp-route-id="@track.Id" class="mt-2">
-    <button type="submit" class="btn btn-outline-danger w-100 rounded-pill" onclick="return confirm('Удалить?')">Удалить</button>
-</form>
-</div>
