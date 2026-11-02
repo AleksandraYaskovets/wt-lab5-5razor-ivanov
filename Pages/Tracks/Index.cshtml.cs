@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using wt_lab5_5razor_ivanov.Models;
 using wt_lab5_5razor_ivanov.Data;
@@ -12,14 +13,15 @@ public class IndexModel : PageModel
     {
         Tracks = TrackStore.Tracks;
     }
-}
 
-public IActionResult OnPostDelete(int id)
-{
-    var track = TrackStore.Tracks.FirstOrDefault(t => t.Id == id);
-    if (track != null)
+    // Метод удаления, который мы добавили в Блоке 5
+    public IActionResult OnPostDelete(int id)
     {
-        TrackStore.Tracks.Remove(track);
+        var track = TrackStore.Tracks.FirstOrDefault(t => t.Id == id);
+        if (track != null)
+        {
+            TrackStore.Tracks.Remove(track);
+        }
+        return RedirectToPage("./Index");
     }
-    return RedirectToPage("./Index");
 }
