@@ -1,0 +1,20 @@
+@page
+@model wt_lab5_5razor_ivanov.Pages.Tracks.DetailsModel
+@{
+    ViewData["Title"] = "О треке";
+}
+
+<div class="container mt-5">
+    <div class="card shadow rounded-4">
+        <div class="card-header bg-dark text-white">
+            <h2>@Model.TrackItem?.Title</h2>
+        </div>
+        <div class="card-body">
+            <p><strong>ID:</strong> @Model.TrackItem?.Id</p>
+            <p><strong>Исполнитель:</strong> @Model.TrackItem?.ArtistName</p>
+            <p><strong>Длительность:</strong> @Model.TrackItem?.DurationSeconds сек.</p>
+            
+            <a asp-page="./Index" class="btn btn-secondary mt-3 rounded-pill">Назад к списку</a>
+        </div>
+    </div>
+</div>

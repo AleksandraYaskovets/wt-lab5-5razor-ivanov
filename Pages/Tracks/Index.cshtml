@@ -1,0 +1,34 @@
+@page
+@model wt_lab5_5razor_ivanov.Pages.Tracks.IndexModel
+@{
+    ViewData["Title"] = "Каталог";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="fw-bold">Каталог треков</h1>
+        <a asp-page="/Tracks/Create" class="btn btn-primary rounded-pill">Добавить трек</a>
+    </div>
+
+    <div class="row g-4">
+        @foreach (var track in Model.Tracks)
+        {
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm rounded-4">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold text-primary">@track.Title</h5>
+                        <h6 class="card-subtitle mb-3 text-muted">@track.ArtistName</h6>
+                        <span class="badge bg-dark rounded-pill">@track.DurationSeconds сек.</span>
+                    </div>
+                    <div class="card-footer bg-white border-0 pb-3">
+                        <a asp-page="/Tracks/Details" asp-route-id="@track.Id" class="btn btn-outline-primary w-100 rounded-pill">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <form method="post" asp-page-handler="Delete" asp-route-id="@track.Id" class="mt-2">
+    <button type="submit" class="btn btn-outline-danger w-100 rounded-pill" onclick="return confirm('Удалить?')">Удалить</button>
+</form>
+</div>

@@ -1,0 +1,40 @@
+@page
+@model wt_lab5_5razor_ivanov.Pages.Tracks.CreateModel
+@{
+    ViewData["Title"] = "Добавление";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow rounded-4">
+                <div class="card-body p-4">
+                    <h2 class="mb-4">Новый трек</h2>
+                    
+                    <form method="post">
+                        <div class="mb-3">
+                            <label asp-for="NewTrack.Title" class="form-label">Название</label>
+                            <input asp-for="NewTrack.Title" class="form-control" />
+                            <span asp-validation-for="NewTrack.Title" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="NewTrack.ArtistName" class="form-label">Исполнитель</label>
+                            <input asp-for="NewTrack.ArtistName" class="form-control" />
+                            <span asp-validation-for="NewTrack.ArtistName" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="NewTrack.DurationSeconds" class="form-label">Длительность (сек)</label>
+                            <input asp-for="NewTrack.DurationSeconds" type="number" class="form-control" />
+                            <span asp-validation-for="NewTrack.DurationSeconds" class="text-danger"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100 rounded-pill mb-2">Сохранить</button>
+                        <a asp-page="./Index" class="btn btn-light w-100 rounded-pill">Отмена</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
