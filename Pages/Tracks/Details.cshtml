@@ -4,17 +4,32 @@
     ViewData["Title"] = "О треке";
 }
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
 <div class="container mt-5">
-    <div class="card shadow rounded-4">
-        <div class="card-header bg-dark text-white">
-            <h2>@Model.TrackItem?.Title</h2>
-        </div>
-        <div class="card-body">
-            <p><strong>ID:</strong> @Model.TrackItem?.Id</p>
-            <p><strong>Исполнитель:</strong> @Model.TrackItem?.ArtistName</p>
-            <p><strong>Длительность:</strong> @Model.TrackItem?.DurationSeconds сек.</p>
-            
-            <a asp-page="./Index" class="btn btn-secondary mt-3 rounded-pill">Назад к списку</a>
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+                <div style="position: relative; height: 250px;">
+                    <img src="https://picsum.photos/seed/@Model.TrackItem?.Id/800/400" style="width: 100%; height: 100%; object-fit: cover;" alt="Cover">
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);"></div>
+                    <div style="position: absolute; bottom: 20px; left: 30px; color: white;">
+                        <h1 class="fw-bold mb-0">@Model.TrackItem?.Title</h1>
+                        <h4 class="opacity-75">@Model.TrackItem?.ArtistName</h4>
+                    </div>
+                </div>
+                
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <span class="text-muted"><i class="bi bi-hash"></i> ID: @Model.TrackItem?.Id</span>
+                        <span class="badge bg-primary rounded-pill"><i class="bi bi-stopwatch"></i> @Model.TrackItem?.DurationSeconds секунд</span>
+                    </div>
+
+                    <a asp-page="./Index" class="btn btn-dark w-100 rounded-pill py-2 mt-2">
+                        <i class="bi bi-arrow-left"></i> Вернуться в каталог
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

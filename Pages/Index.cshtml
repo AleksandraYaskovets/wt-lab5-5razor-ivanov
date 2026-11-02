@@ -1,10 +1,48 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Главная";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    .hero-banner {
+        position: relative;
+        background-image: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=2070&auto=format&fit=crop');
+        background-size: cover;
+        background-position: center;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        margin-top: 2rem;
+    }
+    .hero-overlay {
+        background: linear-gradient(135deg, rgba(20,30,48,0.85) 0%, rgba(36,59,85,0.7) 100%);
+        padding: 8rem 2rem;
+        text-align: center;
+        color: white;
+    }
+    .glass-btn {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        transition: all 0.3s ease;
+    }
+    .glass-btn:hover {
+        background: rgba(255, 255, 255, 0.3);
+        color: white;
+        transform: scale(1.05);
+    }
+</style>
+
+<div class="container">
+    <div class="hero-banner">
+        <div class="hero-overlay">
+            <h1 class="display-3 fw-bold mb-3" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Твоя музыка. Твои правила.</h1>
+            <p class="lead mb-5" style="font-size: 1.5rem; opacity: 0.9;">Открой для себя каталог лучших треков и альбомов.</p>
+            <a asp-page="/Tracks/Index" class="btn glass-btn btn-lg rounded-pill px-5 py-3 fw-bold">
+                Слушать каталог
+            </a>
+        </div>
+    </div>
 </div>
